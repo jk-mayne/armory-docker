@@ -147,6 +147,13 @@ RUN git clone --depth 1 https://github.com/sullo/nikto && \
 ## Install pymeta
 RUN pip install git+https://github.com/m8r0wn/pymeta.git --break-system-packages
 
+## Install snrublist3r
+RUN git clone https://github.com/b3n-j4m1n/snrublist3r.git && \
+    cd snrublist3r && \
+    pip install -r requirements.txt --break-system-packages && \
+    sed -i '1i #!/usr/bin/env python' snrublist3r.py && \
+    ln -s /opt/src/snrublist3r/snrublist3r.py /usr/local/bin/snrublist3r
+
 ## Install Sublist3r
 RUN git clone --depth 1 https://github.com/aboul3la/Sublist3r && \
     cd Sublist3r && \
